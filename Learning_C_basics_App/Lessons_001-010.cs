@@ -176,7 +176,7 @@ namespace Learning_C_basics_App
 
             // Автоматизирует ручной ввод с консоли
             TextReader originalInput = Console.In; // Сохраняет оригинальный ввод
-            var input = "11\n12\n";
+            var input = "11\n11\n";
             Console.SetIn(new StringReader(input));
 
 
