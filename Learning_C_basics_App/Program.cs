@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Learning_C_basics_App
 {
@@ -10,7 +6,10 @@ namespace Learning_C_basics_App
     {
         private static void Main(string[] args)
         {
-            Lessons_001();
+            Lesson_001(); // Типы данных в C#
+            Lesson_002(); // Переменные в С#. Объявление, инициализация, присвоение значенмй (помещение данных) 
+            Lesson_003(); // Ввод данных в консоль
+            Lesson_004(); // Конвертация строки в число. Класс Convert
         }
     }
 }

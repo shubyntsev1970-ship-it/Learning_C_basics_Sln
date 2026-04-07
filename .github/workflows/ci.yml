@@ -1,0 +1,33 @@
+﻿name: .NET CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: msbuild Learning_C_basics_Sln.slnx -t:Restore -p:RestorePackagesConfig=true
+
+      - name: Build
+        run: msbuild Learning_C_basics_Sln.slnx -p:Configuration=Release
+
+      - name: Test Lesson_004
+        run: dotnet test Learning_C_basics_App.Tests/Learning_C_basics_App.Tests.csproj --configuration Release --no-build --no-restore --verbosity normal

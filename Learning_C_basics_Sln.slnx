@@ -1,3 +1,4 @@
-<Solution>
-  <Project Path="Learning_C_basics_App/Learning_C_basics_App.csproj" />
+﻿<Solution>
+  <Project Path="Learning_C_basics_App/Learning_C_basics_App.csproj" Id="9e72fe88-ead7-4859-93e8-741bbbd7c16c" />
+  <Project Path="Learning_C_basics_App.Tests/Learning_C_basics_App.Tests.csproj" Id="1b0fe5fb-f4d7-4df5-8a53-1c0827517fc4" />
 </Solution>
