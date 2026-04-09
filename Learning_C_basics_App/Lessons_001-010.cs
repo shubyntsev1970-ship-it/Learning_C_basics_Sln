@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace Learning_C_basics_App
 {
-    public partial class Program
+    public static partial class Program
     {
         // Типы данных в C#
         public static void Lesson_001()
@@ -147,14 +149,14 @@ namespace Learning_C_basics_App
             Console.SetIn(new StringReader(input));
 
             data = Console.ReadLine();
-            
+
             // возвращаем обратно
             Console.SetIn(originalInput);
 
             Console.WriteLine("Привет " + data);
             Console.WriteLine("Привет " + data + " !!!");
             Console.WriteLine("Привет {0, 10} !!!", data);
-            Console.WriteLine($"Привет {data, 15} !!!");
+            Console.WriteLine($"Привет {data,15} !!!");
 
             Console.WriteLine(new string('-', 120));
         }
@@ -164,7 +166,7 @@ namespace Learning_C_basics_App
         {
             Console.WriteLine("Hello from Lesson_004 Конвертация строки в число. Класс Convert");
 
-            string str1  = "5";
+            string str1 = "5";
             string str2 = "2";
 
             Console.WriteLine(str1 + str2); // 52
@@ -190,11 +192,380 @@ namespace Learning_C_basics_App
 
             // возвращаем обратно
             Console.SetIn(originalInput);
-            
-            
+
+
             int sum = a + b;
 
             Console.WriteLine("Сумма: " + sum);
+
+            str = "1,9";
+            double d = Convert.ToDouble(str);
+            Console.WriteLine(d);
+
+            // Так будет исключение FormatException (зависит от региональных настроек - что используется для десятичного разделителя)
+            str = "1.9";
+            try
+            {
+                d = Convert.ToDouble(str);
+                Console.WriteLine(d);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Ошибка формата: " + e.Message);
+            }
+
+            // Для решения вопроса подключаем протранство имен System.Globalization 
+            NumberFormatInfo info = new NumberFormatInfo()
+            {
+                NumberDecimalSeparator = ".",
+            };
+            // По умолчанию Convert.ToDouble(str) использует текущую культуру системы.
+            // И так тоже будет исключение
+            // d = Convert.ToDouble(str);
+
+            // необходимо
+            d = Convert.ToDouble(str, info);
+            Console.WriteLine(d);
+
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        // Преобразование строк. Parse string. TryParse string.
+        public static void Lesson_005()
+        {
+            Console.WriteLine("Hello from Lesson_005 Преобразование строк. Parse string. TryParse string.");
+
+            string str = "5";
+            Console.WriteLine(int.TryParse(str, out int i)); // True
+            Console.WriteLine(i); // 5
+            Console.WriteLine(int.Parse(str)); // 5
+
+            str = "6,7";
+            Console.WriteLine(double.TryParse(str, out double dbl)); // True
+            Console.WriteLine(dbl); // 6,7
+            Console.WriteLine(double.Parse(str)); // 6,7
+
+            str = "7.7";
+            if (double.TryParse(str, out dbl)) // false
+                Console.WriteLine(dbl);
+
+            NumberFormatInfo info = new NumberFormatInfo()
+            {
+                NumberDecimalSeparator = ".",
+            };
+            dbl = double.Parse(str, info);
+            Console.WriteLine(dbl); // 7,7
+
+            str = "8,8";
+            if (double.TryParse(str, out dbl)) // True
+                Console.WriteLine(dbl); // 8,8
+
+            str = "8,8dsgfgaa";
+            Console.WriteLine(double.TryParse(str, out dbl)); // False
+            Console.WriteLine(dbl);
+
+            str = "dhakjsh";
+
+            try
+            {
+                int a = int.Parse(str);
+                Console.WriteLine($"Успешная конвертация {a}");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Ошибка при конвертации {str} в int");
+            }
+
+            str = "12345";
+
+            try
+            {
+                int a = int.Parse(str);
+                Console.WriteLine($"Успешная конвертация {a}");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Ошибка при конвертации {str} в int");
+            }
+
+            if (int.TryParse(str, out int n))
+                Console.WriteLine(n);
+
+            str = "dhakjsh";
+            if (int.TryParse(str, out n)) // Исключения не будет в отличие от Parse
+                Console.WriteLine(n); // но в то же время ничего не отправит на консоль 
+            else
+                Console.WriteLine($"Ошибка конвертации {str} в int");
+
+            str = "223344";
+            if (int.TryParse(str, out n)) // Исключения не будет в отличие от Parse
+                Console.WriteLine(n); // 223344
+            else
+                Console.WriteLine($"Ошибка конвертации {str} в int");
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        // ОПЕРАТОРЫ.
+        public static void Lesson_006()
+        {
+            Console.WriteLine("Hello from Lesson_006 ОПЕРАТОРЫ.");
+            /*
+             * Приоритет операторов (сверху — сильнее)
+            Основные группы (упрощённо)
+            ()
+            ++ -- (префикс)
+            * / %
+            + -
+            < > <= >=
+            == !=
+            &&
+            ||
+            ?:
+            = += -= и тому подобное
+            */
+
+            // 1.Арифметические операторы
+            // + сложение
+            // - вычитание
+            // * умножение
+            // / деление
+            // % деление по модулю 2
+            int a = 10;
+            int b = 3;
+
+            Console.WriteLine("1.Арифметические операторы");
+            Console.WriteLine($"10 + 3 = {a + b}"); // 13
+            Console.WriteLine($"10 - 3 = {a - b}"); // 7
+            Console.WriteLine($"10 * 3 = {a * b}"); // 30
+            Console.WriteLine($"10 / 3 = {a / b}"); // 3 (целочисленное деление!)
+            Console.WriteLine($"10 % 3 = {a % b}"); // 1 (остаток)
+
+            // 2.Операторы присваивания
+            int x = 5;
+
+            Console.WriteLine("2.Операторы присваивания");
+
+            x += 3;
+            Console.WriteLine($"x += 3 → {x}"); // 8
+
+            x -= 2;
+            Console.WriteLine($"x -= 2 → {x}"); // 6
+
+            x *= 2;
+            Console.WriteLine($"x *= 2 → {x}"); // 12
+
+            x /= 3;
+            Console.WriteLine($"x /= 3 → {x}"); // 4
+
+            x %= 3;
+            Console.WriteLine($"x %= 3 → {x}"); // 1
+
+            // 3.Операторы сравнения
+            a = 5;
+            b = 10;
+
+            Console.WriteLine("3.Операторы сравнения");
+            Console.WriteLine($"5 == 10 → {a == b}"); // false
+            Console.WriteLine($"5 != 10 → {a != b}"); // true
+            Console.WriteLine($"5 > 10 → {a > b}");  // false
+            Console.WriteLine($"5 < 10 → {a < b}");  // true
+            Console.WriteLine($"5 >= 10 → {a >= b}"); // false
+            Console.WriteLine($"5 <= 10 → {a <= b}"); // true
+
+            // 4.Логические операторы
+            bool aa = true;
+            bool bb = false;
+
+            Console.WriteLine("4.Операторы сравнения");
+            Console.WriteLine($"true && false → {aa && bb}"); // false (И)
+            Console.WriteLine($"true || false → {aa || bb}"); // true  (ИЛИ)
+            Console.WriteLine($"!true → {!aa}");              // false (НЕ)
+
+            // 5.Побитовые
+            a = 5; // 0101
+            b = 3; // 0011
+
+            Console.WriteLine("5.Побитовые");
+            Console.WriteLine($"5 & 3 → {a & b}");   // 1  (0001)
+            Console.WriteLine($"5 | 3 → {a | b}");   // 7  (0111)
+            Console.WriteLine($"5 ^ 3 → {a ^ b}");   // 6  (0110)
+            Console.WriteLine($"5 << 1 → {a << 1}"); // 10 (сдвиг влево)
+            Console.WriteLine($"5 >> 1 → {a >> 1}"); // 2  (сдвиг вправо)
+
+            // 6.Тернарный оператор
+            int age = 18;
+
+            Console.WriteLine("6.Тернарный оператор");
+            string result = age >= 18 ? "Взрослый" : "Ребёнок";
+            Console.WriteLine($"Возраст 18 → {result}"); // Взрослый
+
+            // 7.Инкремент / декремент
+            a = 5;
+            b = a++;
+
+            Console.WriteLine("7.Инкремент / декремент");
+            Console.WriteLine($"b = a++ → b = {b}, a = {a}"); // b = 5, a = 6
+
+            int c = 5;
+            int d = ++c;
+            Console.WriteLine($"d = ++c → d = {d}, c = {c}"); // d = 6, c = 6
+
+            // 8.Проверка типа
+            object obj = "hello";
+
+            Console.WriteLine("8.Проверка типа");
+            Console.WriteLine($"obj is string → {obj is string}"); // true
+            Console.WriteLine($"obj is int → {obj is int}");       // false
+
+            // 9.Приведение типов
+            double dd = 10.5;
+            int i = (int)dd;
+
+            Console.WriteLine("9.Приведение типов");
+            Console.WriteLine($"(int)10.5 → {i}"); // 10 (обрезает)
+
+            object obj1 = "text";
+            string s = obj1 as string;
+
+            Console.WriteLine($"obj1 as string → {s}"); // text
+
+            // 10.Null - операторы
+            string name = null;
+
+            Console.WriteLine("10.Null - операторы");
+            Console.WriteLine($"name?.Length → {name?.Length}"); // null
+
+            string result1 = name ?? "default";
+            Console.WriteLine($"name ?? \"default\" → {result1}"); // default
+
+            string text1 = "Привет";
+            string text2 = null;
+
+            Console.WriteLine($"text1?.Length = {text1?.Length}"); // 6
+            Console.WriteLine($"text2?.Length = {text2?.Length}"); // null
+            Console.WriteLine($"text1?.ToLower() = {text1?.ToLower()}"); // привет
+
+            //name ??= "new value";
+            //Console.WriteLine($"name ??= \"new value\" → {name}"); // new value
+
+            // 11.Доступ к членам
+            string text = "hello";
+
+            Console.WriteLine("11.Доступ к членам");
+            Console.WriteLine($"\"hello\".Length → {text.Length}"); // 5
+
+            // 12. new
+            var list = new List<int>();
+
+            Console.WriteLine("12. new");
+            Console.WriteLine($"Создали List<int> → Count = {list.Count}"); // 0
+
+            // 13.Лямбда
+            Func<int, int> square = y => y * y;
+
+            Console.WriteLine("13.Лямбда");
+            Console.WriteLine($"y => y * y, y = 5 → {square(5)}"); // 25
+
+            // 14.nameof
+            Console.WriteLine("14.nameof");
+            Console.WriteLine($"nameof(Console) → {nameof(Console)}"); // Console
+
+            // 15. typeof
+            Console.WriteLine("15. typeof");
+            Console.WriteLine($"typeof(string) → {typeof(string)}"); // System.String
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        // ИНКРЕМЕНТ И ДЕКРЕМЕНТ. ПОСТФИКСНЫЙ И ПРЕФИКСНЫЙ
+        public static void Lesson_007()
+        {
+            Console.WriteLine("Hello from Lesson_007 ИНКРЕМЕНТ И ДЕКРЕМЕНТ. ПОСТФИКСНЫЙ И ПРЕФИКСНЫЙ");
+
+            int a = 0;
+            Console.WriteLine($"a = {a}");
+            a++;
+            Console.WriteLine($"a++ = {a}"); // 1
+            a = 0;
+            a--;
+            Console.WriteLine($"a-- = {a}"); // -1
+
+            int b = 3, c = 3;
+            Console.WriteLine($"b = {b}");
+            Console.WriteLine($"b++ = {b++} - ПОСТФИКСНЫЙ увеличение на 1 после вывода на консоль"); // 3
+            Console.WriteLine($"c = {c}");
+            Console.WriteLine($"++c = {++c} - ПРЕФИКСНЫЙ  увеличение на 1 до вывода на консоль"); // 4
+            Console.WriteLine($"b + c = {b + c} - b уже тоже увеличилось на  1"); // 8
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        // ОПЕРАЦИИ СРАВНЕНИЯ. ОПЕРАТОРЫ ОТНОШЕНИЯ
+        public static void Lesson_008()
+        {
+            Console.WriteLine("Hello from Lesson_008 ОПЕРАЦИИ СРАВНЕНИЯ. ОПЕРАТОРЫ ОТНОШЕНИЯ");
+
+            int a = 5;
+            int b = 10;
+
+            Console.WriteLine($"5 == 10 → {a == b}"); // false
+            Console.WriteLine($"5 != 10 → {a != b}"); // true
+            Console.WriteLine($"5 > 10 → {a > b}");  // false
+            Console.WriteLine($"5 < 10 → {a < b}");  // true
+            Console.WriteLine($"5 >= 10 → {a >= b}"); // false
+            Console.WriteLine($"5 <= 10 → {a <= b}"); // true
+
+            bool res = a == b;
+            Console.WriteLine(res); // false
+
+            Console.WriteLine(new string('-', 120));
+        }
+        // IF ELSE. КОНСТРУКЦИЯ ЛОГИЧЕСКОГО ВЫБОРА. ВЕТВЛЕНИЕ
+        public static void Lesson_009()
+        {
+            Console.WriteLine("Hello from Lesson_009 IF ELSE. КОНСТРУКЦИЯ ЛОГИЧЕСКОГО ВЫБОРА. ВЕТВЛЕНИЕ");
+
+            bool isInfected  = true;
+            bool isDied = false;
+
+            if (isInfected)
+            {
+                Console.WriteLine("Infected"); // Infected 
+            }
+
+            if (isDied)
+            {
+                Console.WriteLine("Died"); // Ничего не выведет
+            }
+
+            isInfected = false;
+
+            if (isInfected)
+            {
+                Console.WriteLine("Infected"); // Ничего не выведет
+            }
+            else
+            {
+                Console.WriteLine("Not infected"); // Not infected
+            }
+
+            Console.WriteLine("Введите целое число a:");
+            if (!int.TryParse(Console.ReadLine(), out int a))
+            {
+                Console.WriteLine("Ошибка формата. По умолчанию a = 55");
+                a = 55;
+            }
+
+            if (a == 5)
+            {
+                Console.WriteLine("a равно 5");
+            }
+            else
+            {
+                Console.WriteLine("a не равно 5");
+            }
 
             Console.WriteLine(new string('-', 120));
         }
