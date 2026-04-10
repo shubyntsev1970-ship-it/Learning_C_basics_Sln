@@ -10,6 +10,9 @@ namespace HomeWork_05
     {
         static void Main()
         {
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
             Console.WriteLine("Домашнее задание 5 Калькулятор + - * / 1 вариант - switch 2 вариант - if else");
 
             double firstValue, secondValue;
