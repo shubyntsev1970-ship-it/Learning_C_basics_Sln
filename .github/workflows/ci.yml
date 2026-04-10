@@ -31,3 +31,6 @@ jobs:
 
       - name: Test Lesson_004
         run: dotnet test Learning_C_basics_App.Tests/Learning_C_basics_App.Tests.csproj --configuration Release --no-build --no-restore --verbosity normal
+
+      - name: Test HomeWork_05
+        run: dotnet test HomeWork_05.Tests/HomeWork_05.Tests.csproj --configuration Release --no-build --no-restore --verbosity normal

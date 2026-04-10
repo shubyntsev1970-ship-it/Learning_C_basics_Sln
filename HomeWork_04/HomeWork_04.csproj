@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E72FE88-EAD7-4859-93E8-741BBBD7C16C}</ProjectGuid>
+    <ProjectGuid>{09D24436-D4E0-4AD6-9F7C-21AE4C1E3A58}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Learning_C_basics_App</RootNamespace>
-    <AssemblyName>Learning_C_basics_App</AssemblyName>
+    <RootNamespace>HomeWork_04</RootNamespace>
+    <AssemblyName>HomeWork_04</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lessons_001-010.cs" />
-    <Compile Include="Lessons_011-020.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

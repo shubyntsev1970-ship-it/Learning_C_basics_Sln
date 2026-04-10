@@ -551,13 +551,8 @@ namespace Learning_C_basics_App
                 Console.WriteLine("Not infected"); // Not infected
             }
 
-            Console.WriteLine("Введите целое число a:");
-            if (!int.TryParse(Console.ReadLine(), out int a))
-            {
-                Console.WriteLine("Ошибка формата. По умолчанию a = 55");
-                a = 55;
-            }
-
+            int a = 5; 
+            
             if (a == 5)
             {
                 Console.WriteLine("a равно 5");
@@ -569,5 +564,74 @@ namespace Learning_C_basics_App
 
             Console.WriteLine(new string('-', 120));
         }
+        
+        //ЛОГИЧЕСКИЕ ОПЕРАТОРЫ. СОКРАЩЁННЫЕ ЛОГИЧЕСКИЕ ОПЕРАЦИИ
+        public static void Lesson_010()
+        {
+            // &&  Сокращенное И сокращенное потому что, если первое условие false,
+            // то второе уже не проверяется, так как результат будет false
+
+            // ||  Сокращенное ИЛИ потому что , если первое условие true,
+            // то второе уже не проверяется, так как результат будет true
+
+            // &   И (логическое И, не сокращённое, проверяет оба условия всегда)
+
+            // |   ИЛИ (логическое ИЛИ, не сокращённое, проверяет оба условия всегда)
+
+            // !   НЕ (унарный)
+
+            Console.WriteLine("Hello from Lesson_010 ЛОГИЧЕСКИЕ ОПЕРАТОРЫ. СОКРАЩЁННЫЕ ЛОГИЧЕСКИЕ ОПЕРАЦИИ");
+
+            bool isInfected = true;
+
+            if (isInfected)
+            {
+                Console.WriteLine("Infected"); // Infected
+            }
+            else
+            {
+                Console.WriteLine("Not infected"); // Ничего не выведет
+            }
+
+            if (!isInfected)  // !   НЕ (унарный)
+            { 
+                Console.WriteLine("Not infected"); // Ничего не выведет
+            }
+            else 
+            { 
+                Console.WriteLine("Infected"); // Infected
+            }
+
+            bool isHighTemperature = true;
+
+            bool hasNoCooling = true;
+
+            if (isHighTemperature && hasNoCooling) // &&  Сокращенное И
+            {
+                Console.WriteLine("Угроза повреждения процессора!!!"); // Угроза повреждения процессора!!!
+            }
+
+            hasNoCooling = false;
+
+            if (isHighTemperature && hasNoCooling) // &&  Сокращенное И
+            {
+                Console.WriteLine("Угроза повреждения процессора!!!"); // Ничего не выведет, так как hasNoCooling = false
+            }
+
+            if (isHighTemperature || hasNoCooling) // ||  Сокращенное ИЛИ
+            {
+                Console.WriteLine("Угроза повреждения процессора!!!"); // Угроза повреждения процессора!!!
+            }
+
+            isHighTemperature = false;
+
+            if (isHighTemperature || hasNoCooling) // ||  Сокращенное ИЛИ
+            {
+                Console.WriteLine("Угроза повреждения процессора!!!"); // Ничего не выведет, так как оба условия false
+            }
+
+            Console.WriteLine(new string('-', 120));
+        }
+
     }
 }
