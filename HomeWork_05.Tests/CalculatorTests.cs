@@ -1,7 +1,8 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text;
 
 namespace HomeWork_05.Tests
 {
@@ -45,8 +46,8 @@ namespace HomeWork_05.Tests
         {
             var output = RunCalculator("10\n5\n+\n");
 
-            StringAssert.Contains(output, "Результат сложения: 15");
-            Assert.AreEqual(2, CountOccurrences(output, "Результат сложения: 15"), "Expected both switch and if/else branches to print the addition result.");
+            StringAssert.Contains(output, "The result of addition: 15");
+            Assert.AreEqual(2, CountOccurrences(output, "The result of addition: 15"), "Expected both switch and if/else branches to print the addition result.");
         }
 
         [TestMethod]
@@ -54,8 +55,8 @@ namespace HomeWork_05.Tests
         {
             var output = RunCalculator("12\n0\n/\n");
 
-            StringAssert.Contains(output, "Ошибка: деление на ноль.");
-            Assert.AreEqual(2, CountOccurrences(output, "Ошибка: деление на ноль."), "Expected both switch and if/else branches to print the division by zero error.");
+            StringAssert.Contains(output, "Error: division by zero.");
+            Assert.AreEqual(2, CountOccurrences(output, "Error: division by zero."), "Expected both switch and if/else branches to print the division by zero error.");
         }
 
         private static int CountOccurrences(string text, string value)

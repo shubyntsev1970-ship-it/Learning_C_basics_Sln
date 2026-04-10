@@ -31,7 +31,7 @@ namespace HomeWork_05
             switch (action)
             {
                 case "+":
-                    Console.WriteLine($"Результат сложения: {firstValue + secondValue}");
+                    Console.WriteLine($"The result of addition: {firstValue + secondValue}");
                     break;
                 case "-":
                     Console.WriteLine($"Результат вычитания: {firstValue - secondValue}");
@@ -43,7 +43,7 @@ namespace HomeWork_05
                     if (secondValue != 0)
                         Console.WriteLine($"Результат деления: {firstValue / secondValue}");
                     else
-                        Console.WriteLine("Ошибка: деление на ноль.");
+                        Console.WriteLine("Error: division by zero.");
                     break;
                 default:
                     Console.WriteLine("Неверная операция.");
@@ -51,7 +51,7 @@ namespace HomeWork_05
             }
 
             if (action == "+")
-                Console.WriteLine($"Результат сложения: {firstValue + secondValue}");
+                Console.WriteLine($"The result of addition: {firstValue + secondValue}");
             else if (action == "-")
                 Console.WriteLine($"Результат вычитания: {firstValue - secondValue}");
             else if (action == "*")
@@ -61,7 +61,7 @@ namespace HomeWork_05
                 if (secondValue != 0)
                     Console.WriteLine($"Результат деления: {firstValue / secondValue}");
                 else
-                    Console.WriteLine("Ошибка: деление на ноль.");
+                    Console.WriteLine("Error: division by zero.");
             }
             else
                 Console.WriteLine("Неверная операция.");
