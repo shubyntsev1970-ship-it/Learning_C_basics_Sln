@@ -3,9 +3,10 @@
   <Project Path="HomeWork_02/HomeWork_02.csproj" Id="9e31fece-5cb6-430f-8c59-dac64f6a5c44" />
   <Project Path="HomeWork_03/HomeWork_03.csproj" Id="331a53f2-10ea-461d-b99e-fb61b7d12ad9" />
   <Project Path="HomeWork_04/HomeWork_04.csproj" Id="09d24436-d4e0-4ad6-9f7c-21ae4c1e3a58" />
-  <Project Path="HomeWork_05/HomeWork_05.csproj" Id="f66d4de0-6453-4e15-a5dc-f85e353f7454" />
   <Project Path="HomeWork_05.Tests/HomeWork_05.Tests.csproj" Id="c8f8a3d0-4dd4-4e1e-9c11-1545e76bf5df" />
+  <Project Path="HomeWork_05/HomeWork_05.csproj" Id="f66d4de0-6453-4e15-a5dc-f85e353f7454" />
   <Project Path="HomeWork_06/HomeWork_06.csproj" Id="45da7353-0c6a-4755-aa8d-4eb4467b54a7" />
+  <Project Path="HomeWork_07/HomeWork_07.csproj" Id="470014a1-47b5-44bf-9367-139a19a77a53" />
   <Project Path="Learning_C_basics_App.Tests/Learning_C_basics_App.Tests.csproj" Id="1b0fe5fb-f4d7-4df5-8a53-1c0827517fc4" />
   <Project Path="Learning_C_basics_App/Learning_C_basics_App.csproj" Id="9e72fe88-ead7-4859-93e8-741bbbd7c16c" />
 </Solution>
