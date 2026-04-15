@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E72FE88-EAD7-4859-93E8-741BBBD7C16C}</ProjectGuid>
+    <ProjectGuid>{402778CC-E013-42CE-80FC-B8F3B0CF04C2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Learning_C_basics_App</RootNamespace>
-    <AssemblyName>Learning_C_basics_App</AssemblyName>
+    <RootNamespace>HomeWork_10</RootNamespace>
+    <AssemblyName>HomeWork_10</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,22 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lessons_001-010.cs" />
-    <Compile Include="Lessons_011-020.cs" />
-    <Compile Include="Lessons_021-030.cs" />
-    <Compile Include="Lessons_031-040.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lessons_WinForms\Lessons_WinForms.csproj">
-      <Project>{4d85ae55-22d5-4188-808e-2254a99f16d5}</Project>
-      <Name>Lessons_WinForms</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

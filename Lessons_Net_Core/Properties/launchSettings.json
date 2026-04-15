@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Lessons_Net_Core": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
