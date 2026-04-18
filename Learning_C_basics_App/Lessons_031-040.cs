@@ -152,9 +152,9 @@ namespace Learning_C_basics_App
                       // и попытка доступа к элементу массива вызовет NullReferenceException
             try
             {
-                Console.WriteLine(a[0]); // Ошибка! NullReferenceException, так как переменная a указывает на null
+                Console.WriteLine(a.Length); // Ошибка! NullReferenceException, так как переменная a указывает на null
             }
-            catch (NullReferenceException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Произошла ошибка: {ex.Message}");
             }
@@ -205,6 +205,11 @@ namespace Learning_C_basics_App
         {
             Console.WriteLine("Hello from Lesson_037  ОПЕРАТОР УСЛОВНОГО NULL ?. ПРИМЕР ИСПОЛЬЗОВАНИЯ");
             Console.WriteLine();
+
+            // ОПЕРАТОР УСЛОВНОГО NULL (?.) - это оператор, который позволяет безопасно
+            // обращаться к членам объекта, который может быть null.
+            // Если объект равен null, то результат всего выражения будет null,
+            // вместо того чтобы выбрасывать исключение NullReferenceException.
 
             int[] myArray = GetArray();
 
@@ -377,6 +382,9 @@ namespace Learning_C_basics_App
             Console.WriteLine("Hello from Lesson_039  Ссылочные локальные переменные. Возвращаемые ссылочные значения");
             Console.WriteLine();
 
+            // Ссылочная локальная переменная - это переменная, которая хранит ссылку на объект в памяти, а не само значение.
+            // Возвращаемые ссылочные значения - это возможность возвращать ссылку на объект из метода, а не само значение.
+
             int[] arr = { 2, 6, 1 };
 
 
@@ -407,6 +415,35 @@ namespace Learning_C_basics_App
         static ref int Foo(int[] numbers)
         {
             return ref numbers[0]; // Возвращаем ссылку на первый элемент массива
+        }
+
+        // КЛЮЧЕВОЕ СЛОВО OUT. РАЗНИЦА между REF и OUT
+        private static void Lesson_040()
+        {
+            Console.WriteLine("Hello from Lesson_040  КЛЮЧЕВОЕ СЛОВО OUT. РАЗНИЦА между REF и OUT");
+            Console.WriteLine();
+            
+            // КЛЮЧЕВОЕ СЛОВО OUT - это ключевое слово в C#, которое используется для передачи аргумента по ссылке в метод,
+            // но с обязательным присвоением значения внутри метода.
+            // В отличие от ref, аргумент, переданный с помощью out, не должен (но может) быть инициализирован
+            // до вызова метода, но должен быть обязательно присвоен внутри метода.
+            
+            int number;
+            
+            //Console.WriteLine(number); // Ошибка! Переменная number не инициализирована
+            Initialize(out number);
+            Console.WriteLine($"Значение переменной number после вызова метода Initialize(out int number): {number}"); // Вывод: 100
+
+            // Можно так
+            Initialize(out int number1);
+            Console.WriteLine($"Значение переменной number1 после вызова метода Initialize(out int number1): {number1}"); // Вывод: 100
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        private static void Initialize(out int number)
+        {
+            number = 100; // Присваиваем значение параметру out
         }
     }
 }
