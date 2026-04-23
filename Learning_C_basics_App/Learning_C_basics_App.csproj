@@ -50,6 +50,7 @@
     <Compile Include="Lessons_031-040.cs" />
     <Compile Include="Lessons_041-050.cs" />
     <Compile Include="Lessons_051-060.cs" />
+    <Compile Include="Lessons_061-070.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
