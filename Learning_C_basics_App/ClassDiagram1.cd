@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Learning_C_basics_App.Program" Collapsed="true">
+    <Position X="2.25" Y="1" Width="8.5" />
+    <NestedTypes>
+      <Class Name="Learning_C_basics_App.Program.Point5" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass3" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="Learning_C_basics_App.Program.DaysOfWeek" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_041-050.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Learning_C_basics_App.Program.Point4" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Gun" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Person" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.DbRepository" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass4" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Address" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Point3" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="Learning_C_basics_App.Program.Color" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Learning_C_basics_App.Program.Point" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass5" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Student4" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Car" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Student5" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Person1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_031-040.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="Learning_C_basics_App.Program.MyEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_031-040.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Learning_C_basics_App.Program.Student1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.GameInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_031-040.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="Learning_C_basics_App.Program.GameType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Learning_C_basics_App.Program.Item" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_041-050.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Game" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass6" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.ConfigurationManager" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_061-070.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Point1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Student" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Point6" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Struct Name="Learning_C_basics_App.Program.MyStruct" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_031-040.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Class Name="Learning_C_basics_App.Program.Student3" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.Point2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Learning_C_basics_App.Program.MyClass2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Lessons_051-060.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>APiHAQIAAQhAAAAAIAIgAoBCKEAAYAIAEABABQAEAEQ=</HashCode>
+      <FileName>Lessons_011-020.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Learning_C_basics_App.StringExtensions" Collapsed="true">
+    <Position X="9.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Lessons_061-070.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Learning_C_basics_App.MyExtensions" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAABAAAAAAAAAAAAAAIAAAAAABEAAA=</HashCode>
+      <FileName>Lessons_061-070.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Learning_C_basics_App.Student2" Collapsed="true">
+    <Position X="12.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Lessons_061-070.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

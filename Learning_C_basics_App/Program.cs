@@ -76,8 +76,14 @@ namespace Learning_C_basics_App
             Lesson_062(); // Статический класс. Как работает ключевое слово static
             Lesson_063(); // Методы расширения. Extension методы
             Lesson_064(); // Partial класс. Частичные типы. partial методы
-            Lesson_065(); // Const vs readonly. Разница между const и readonlyю. const и static
-            Lesson_066(); // Синтаксис инициализации объектов класса. ООП 
+            Lesson_065(); // Const vs readonly. Разница между const и readonly. const и static
+            Lesson_066(); // Синтаксис инициализации объектов класса. ООП
+            Lesson_067(); // Наследование. Что такое наследование в ООП
+            Lesson_068(); // Ключевое слово base. Наследование и конструктор класса
+            Lesson_069(); // Операторы as is. Наследование и приведение типов
+            Lesson_070(); // Наследование и модификаторы доступа. Модификатор protected.  Модификатор private protected 
+            Lesson_071(); // Полиморфизм. Виртуальные методы. virtual override 
+            Lesson_072(); // Абстрактные классы. Зачем нужны абстрактные методы. abstract. Полиморфизм
 
             Console.ReadLine();
         }
