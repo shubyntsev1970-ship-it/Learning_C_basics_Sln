@@ -59,7 +59,7 @@
             Console.WriteLine($"Подмассив с индекса 2 до конца массива: {string.Join(" ", subArray)}");
 
             Console.WriteLine(new string('-', 120));
-            
+
             // Lesson_036() ОПЕРАТОР ПРИСВАИВАНИЯ ОБЪЕДИНЕНИЯ СО ЗНАЧЕНИЕМ NULL в C# 8  ??=
             Console.WriteLine("Hello from Lesson_036 ОПЕРАТОР ПРИСВАИВАНИЯ ОБЪЕДИНЕНИЯ СО ЗНАЧЕНИЕМ NULL");
 
@@ -72,10 +72,80 @@
             // В этом случае str будет присвоено значение "Default Value", так как str равно null
             str ??= "Default Value";
             Console.WriteLine(str);
-            
+
+            Console.WriteLine(new string('-', 120));
+
+            // Lesson_076 Реализация интерфейса по умолчанию
+            Console.WriteLine("Hello from Lesson_076  Реализация интерфейса по умолчанию");
+            Console.WriteLine();
+
+            ILogger consoleLogger = new ConsoleLogger();
+
+            consoleLogger.Log(LogLevel.Debug, "some event");      // "некоторое событие"
+            consoleLogger.Log(LogLevel.Error, "some fatal error"); // "некоторая ошибка"
+            consoleLogger.Log(LogLevel.Info, "some info");      // "некоторая информация"
+            consoleLogger.Log(LogLevel.Warning, "some warning");  // "некоторое предупреждение"
+            consoleLogger.Log(LogLevel.Fatal, "some fatal error"); // "некоторая фатальная ошибка"
+
+            Console.WriteLine();
+
+            consoleLogger.Foo();
+                        
             Console.WriteLine(new string('-', 120));
 
             Console.ReadLine();
         }
+        public enum LogLevel
+        {
+            Debug,
+            Info,
+            Warning,
+            Error,
+            Fatal
+        }
+        public interface ILogger
+        {
+            void Log(LogLevel logLevel, string message);
+
+            // Реализация интерфейса по умолчанию (Default Interface Implementation) в C# 8.0 и выше
+            // Эта возможность добавлена с целью облегчения расширяемости интерфейсов без нарушения существующих реализаций.
+            // Так как если бы это было добавлено без реализации по умолчанию, то все классы,
+            // которые реализуют этот интерфейс, должны были бы реализовать этот метод.
+            void Foo()
+            {
+                Console.WriteLine("Реализация интерфейса по умолчанию");
+            }
+
+        }
+        class ConsoleLogger : ILogger
+        {
+            public void Log(LogLevel logLevel, string message)
+            {
+
+                switch (logLevel) // переключатель по уровню логирования
+                {
+                    case LogLevel.Debug:
+                        Console.ForegroundColor = ConsoleColor.Green; // цвет текста — зелёный
+                        break;
+
+                    case LogLevel.Info:
+                        Console.ForegroundColor = ConsoleColor.White; // цвет текста — белый
+                        break;
+
+                    case LogLevel.Warning:
+                        Console.ForegroundColor = ConsoleColor.Yellow; // цвет текста — жёлтый
+                        break;
+
+                    case LogLevel.Error:
+                    case LogLevel.Fatal:
+                        Console.ForegroundColor = ConsoleColor.Red; // цвет текста — красный
+                        break;
+                }
+                // вывод в консоль: "текущая дата и время уровень логирования: сообщение"
+                Console.WriteLine($"{DateTime.Now} {logLevel}: {message}");
+                Console.ResetColor();
+            }
+        }
     }
 }
+

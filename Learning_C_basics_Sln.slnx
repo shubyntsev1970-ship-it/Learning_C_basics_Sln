@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Benchmark/Benchmark.csproj" Id="36e63d91-6baa-40fa-8a76-f1b0bc5c1d1b" />
+  <Project Path="Benchmark1/Benchmark1.csproj" Id="53e570b5-595c-4372-a996-3ff941011583" />
   <Project Path="BenchmarkExample/BenchmarkExample.csproj" Id="438e59d7-5a32-4095-9a72-e9ebfc77b992" />
   <Project Path="HomeWork-01/HomeWork_01.csproj" Id="f4e8433b-9947-4a82-b106-9e37c1f58896" />
   <Project Path="HomeWork_02/HomeWork_02.csproj" Id="9e31fece-5cb6-430f-8c59-dac64f6a5c44" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -446,7 +447,7 @@ namespace Learning_C_basics_App
             ((ISecondInterface)myOtherClass).Action(); // Вызывает метод Action() из ISecondInterface
 
             // или так безопасней
-           
+
             if (myOtherClass is IFirstInterface first2Interface)
             {
                 first2Interface.Action();
@@ -512,6 +513,382 @@ namespace Learning_C_basics_App
         static void Bar(ISecondInterface secondInterface)
         {
             secondInterface.Action();
+        }
+
+        // Реализация интерфейса по умолчанию
+        public static void Lesson_076()
+        {
+            Console.WriteLine("Hello from Lesson_076  Реализация интерфейса по умолчанию");
+            Console.WriteLine();
+
+            // В C# 8.0 и выше интерфейсы могут содержать реализацию методов по умолчанию.
+            // Это позволяет добавлять новые методы в интерфейсы без необходимости изменять все классы, которые их реализуют.
+
+            ILogger consoleLogger = new ConsoleLogger();
+
+            consoleLogger.Log(LogLevel.Debug, "some event");      // "некоторое событие"
+            consoleLogger.Log(LogLevel.Error, "some fatal error"); // "некоторая ошибка"
+            consoleLogger.Log(LogLevel.Info, "some info");      // "некоторая информация"
+            consoleLogger.Log(LogLevel.Warning, "some warning");  // "некоторое предупреждение"
+            consoleLogger.Log(LogLevel.Fatal, "some fatal error"); // "некоторая фатальная ошибка"
+
+            // До этого момента работает все хорошо здесь в .NET Framework 4.7.2
+            // Далее смотри в проекте Lessons_Net_Core
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        public enum LogLevel
+        {
+            Debug,
+            Info,
+            Warning,
+            Error,
+            Fatal
+        }
+        public interface ILogger
+        {
+            void Log(LogLevel logLevel, string message);
+
+            // До этого момента работает все хорошо здесь в .NET Framework 4.7.2 (C# 7.3)
+            // Когда начинаем реализовывать метод LogError  то получаем ошибку компиляции
+            // используйте версию C# 8.0 или выше для использования реализации интерфейса по умолчанию.
+            // Далее смотри в проекте Lessons_Net_Core
+
+            /*
+             void LogError(LogLevel logLevel, string message)
+             {
+                 Console.WriteLine($"{logLevel}: {message}");
+             }
+            */
+
+            // Далее смотри в проекте Lessons_Net_Core
+
+        }
+        class ConsoleLogger : ILogger
+        {
+            public void Log(LogLevel logLevel, string message)
+            {
+                switch (logLevel) // переключатель по уровню логирования
+                {
+                    case LogLevel.Debug:
+                        Console.ForegroundColor = ConsoleColor.Green; // цвет текста — зелёный
+                        break;
+
+                    case LogLevel.Info:
+                        Console.ForegroundColor = ConsoleColor.White; // цвет текста — белый
+                        break;
+
+                    case LogLevel.Warning:
+                        Console.ForegroundColor = ConsoleColor.Yellow; // цвет текста — жёлтый
+                        break;
+
+                    case LogLevel.Error:
+                    case LogLevel.Fatal:
+                        Console.ForegroundColor = ConsoleColor.Red; // цвет текста — красный
+                        break;
+                }
+                // вывод в консоль: "текущая дата и время уровень логирования: сообщение"
+                Console.WriteLine($"{DateTime.Now} {logLevel}: {message}");
+                Console.ResetColor();
+            }
+        }
+
+        // Структуры. Структуры и классы отличия. struct vs class
+        public static void Lesson_077()
+        {
+            Console.WriteLine("Hello from Lesson_077  Структуры. Структуры и классы отличия. struct vs class");
+            Console.WriteLine();
+
+            // Структуры в C# - это значимые типы, которые обычно используются для представления небольших объектов,
+            // таких как точки, прямоугольники, цвета и т.д. Они хранятся в стеке, а не в куче, что делает их более эффективными
+            // для небольших объектов.
+            // А классы в C# - это ссылочные типы, которые обычно используются для представления более сложных объектов.
+            // Если используется большой объем данных то лучше использовать классы,
+            // так как они хранятся в куче и управляются сборщиком мусора. Также при передачи этого большого объема данных
+            // в методы и функции, классы передаются по ссылке, что экономит память и время на копирование данных.
+            // Структуры лучше использовать для небольших объектов,
+            // которые часто создаются и уничтожаются, таких как точки, прямоугольники, цвета и т.д.
+            // И структуры м классы могут реализовывать интерфейсы,
+            // но структуры не могут наследоваться от других структур или классов.
+
+            // Смотри также проект Benchmark1
+
+            ClassPoint classPoint = new ClassPoint();
+
+            StructPoint structPoint = new StructPoint();
+
+            Console.WriteLine("Before increment");
+            Console.Write("ClassPoint params: ");
+            classPoint.Print();
+            Console.Write("StructPoint params: ");
+            structPoint.Print();
+
+            Console.WriteLine("After increment");
+            Console.Write("ClassPoint params: ");
+            Foo(classPoint);
+            classPoint.Print(); // Изменятся значения так как ClassPoint является ссылочным типом
+                                // и передается по ссылке в метод Foo
+
+            Console.Write("StructPoint params: ");
+            Bar(structPoint);
+            structPoint.Print(); // Не изменятся значения так как StructPoint является значимым типом
+                                 // и передается по значению в метод Bar
+
+            ClassPoint classPoint1 = new ClassPoint { X = 2, Y = 3 };
+            ClassPoint classPoint2 = new ClassPoint { X = 2, Y = 3 };
+
+            bool classesAreEqual = classPoint1.Equals(classPoint2); // false так как сравниваются ссылки на объекты, а не их значения
+
+            StructPoint structPoint1 = new StructPoint { X = 2, Y = 3 };
+            StructPoint structPoint2 = new StructPoint { X = 2, Y = 3 };
+
+            bool structsAreEqual = structPoint1.Equals(structPoint2); // true так как сравниваются значения объектов, а не ссылки на них
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        static void Foo(ClassPoint classPoint)
+        {
+            classPoint.X++;
+            classPoint.Y++;
+        }
+
+        static void Bar(StructPoint structPoint)
+        {
+            structPoint.X++;
+            structPoint.Y++;
+        }
+        public class ClassPoint
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+
+            public void Print()
+            {
+                Console.WriteLine($"X:{X}\tY:{Y}");
+            }
+        }
+
+        public struct StructPoint
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+
+            public void Print()
+            {
+                Console.WriteLine($"X:{X}\tY:{Y}");
+            }
+        }
+
+        // Упаковка и распаковка значимых типов.boxing and unboxing
+        public static void Lesson_078()
+        {
+            Console.WriteLine("Hello from Lesson_078  Упаковка и распаковка значимых типов.boxing and unboxing");
+            Console.WriteLine();
+
+            // Упаковка (boxing) - это процесс преобразования значимого типа в ссылочный тип.
+            // Распаковка (unboxing) - это процесс извлечения значимого типа из ссылочного типа.
+
+            int value = 123; // Значимый тип
+            object boxedValue = value; // Упаковка: преобразование int в object
+            int unboxedValue = (int)boxedValue; // Распаковка: извлечение int из object
+            Console.WriteLine($"Значимый тип: {value}");
+            Console.WriteLine($"Упакованный тип: {boxedValue}");
+            Console.WriteLine($"Распакованный тип: {unboxedValue}");
+
+            // decimal d = (decimal)boxedValue; // Ошибка во время выполнения: невозможно распаковать object в decimal,
+            // так как boxedValue содержит int
+
+            // Смотри также проект Benchmark1
+
+            PointLesson_078 point = new PointLesson_078 { X = 2, Y = 4 };
+
+            // Здесь происходит упаковка PointLesson_078 в IPrintable
+            Print(point);
+
+            // Здесь тоже происходит упаковка
+            var t = value.GetType();
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        interface IPrintable
+        {
+            void Print();
+        }
+
+        struct PointLesson_078 : IPrintable
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+
+            public void Print()
+            {
+                Console.WriteLine($"X:{X}\tY{Y}");
+            }
+        }
+        static void Print(IPrintable printable)
+        {
+            printable.Print();
+        }
+
+        // Обобщения. generics. generic типы методы и классы
+        public static void Lesson_079()
+        {
+            Console.WriteLine("Hello from Lesson_079  Обобщения. generics. generic типы методы и классы");
+            Console.WriteLine();
+
+            // Обобщения (generics) позволяют создавать классы, методы и структуры, которые могут работать с любыми типами данных.
+            // Это позволяет создавать более гибкие и переиспользуемые компоненты.
+            // Решить проблему упакки и распаковки значимых типов можно с помощью обобщений (generics).
+
+            int a = 1, b = 5;
+
+            Console.WriteLine($"a = {a}\t b = {b}");
+
+            Swap(ref a, ref b);
+
+            Console.WriteLine($"a = {a}\t b = {b}");
+
+            SwapGeneric(ref a, ref b);
+
+            Console.WriteLine($"a = {a}\t b = {b}");
+            Console.WriteLine();
+
+            string str1 = "Hello";
+            string str2 = "World";
+
+            Console.WriteLine($"str1 = {str1}\t str2 = {str2}");
+            SwapGeneric(ref str1, ref str2);
+            Console.WriteLine($"str1 = {str1}\t str2 = {str2}");
+            Console.WriteLine();
+
+            //FooGeneric(); // Выдаст ошибку так как тип данных не указан, так как метод FooGeneric()
+            // возвращает значение по умолчанию для типа T, который не был указан.
+
+            Console.WriteLine(FooGeneric<int>()); // 0
+            Console.WriteLine(FooGeneric<string>()); // null
+            Console.WriteLine(FooGeneric<bool>()); // false
+            Console.WriteLine();
+
+            // List тоже использует обобщения, так как может хранить элементы любого типа данных,
+            // но при этом все элементы должны быть одного типа.
+            List<int> list = new List<int>();
+            list.Add(2);
+            list.Add(3);
+            Console.WriteLine(list[0]);
+            list[0] = 11;
+            Console.WriteLine(list[0]);
+            Console.WriteLine();
+
+            MyList<int> myList = new MyList<int>();
+            myList.Add(5);
+            myList.Add(7);
+            myList.Add(9);
+            myList.Add(45);
+
+            for (int i = 0; i < myList.Count; i++)
+            {
+                Console.WriteLine(myList[i]);
+            }
+
+            Console.WriteLine(new string('-', 120));
+        }
+
+        public class MyList<T>
+        {
+            private T[] _array = Array.Empty<T>();
+
+            public T this[int index]
+            {
+                get
+                {
+                    return _array[index];
+                }
+                set
+                {
+                    _array[index] = value;
+                }
+            }
+
+            public int Count { get { return _array.Length; } }
+
+            public void Add(T value)
+            {
+                var newArray = new T[_array.Length + 1];
+
+                for (int i = 0; i < _array.Length; i++)
+                {
+                    newArray[i] = _array[i];
+                }
+
+                newArray[_array.Length] = value;
+                _array = newArray;
+            }
+        }
+
+        static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        // тип данных может быть любой но идентичный для обоих параметров метода
+        static void SwapGeneric<T>(ref T a, ref T b)
+        {
+            T temp = a;
+            a = b;
+            b = temp;
+        }
+
+        static T FooGeneric<T>()
+        {
+            return default(T);
+        }
+
+        // Обобщения. Производительность. Коллекции. list vs arraylist
+        public static void Lesson_080()
+        {
+            Console.WriteLine("Hello from Lesson_080  Обобщения. Производительность. Коллекции. list vs arraylist");
+            Console.WriteLine();
+
+            // List<T> - это обобщенная коллекция, которая хранит элементы одного типа данных.
+            // ArrayList - это не обобщенная коллекция, которая может хранить элементы любого типа данных.
+            // При использовании ArrayList происходит упаковка и распаковка значимых типов, что может негативно сказаться на
+            // производительности.
+            // List<T> использует обобщения, что позволяет избежать упаковки и распаковки значимых типов и улучшить производительность.
+
+            List<int> list = new List<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            // list.Add("ttt"); // Ошибка компиляции: невозможно добавить строку в List<int>
+
+            ArrayList arrayList = new ArrayList();
+            arrayList.Add(1);
+            arrayList.Add(2);
+            arrayList.Add(3);
+            arrayList.Add("ttt");
+            arrayList.Add(2 == 2);
+            arrayList.Add(3 > 9);
+
+            Console.WriteLine("List<int>:");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("ArrayList:");
+            foreach (var item in arrayList)
+            {
+                Console.WriteLine(item);
+            }
+
+            // -> Смотри также проект Benchmark1
+
+            Console.WriteLine(new string('-', 120));
         }
     }
 }

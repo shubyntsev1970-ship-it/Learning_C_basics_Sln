@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace Learning_C_basics_App
@@ -87,8 +88,20 @@ namespace Learning_C_basics_App
             Lesson_073(); // Интерфейсы и полиморфизм. Зачем нужны и как используются 
             Lesson_074(); // Наследование интерфейсов. Множественное наследование интерфейсов
             Lesson_075(); // Интерфейсы. ЯВНАЯ РЕАЛИЗАЦИЯ интерфейса
+            Lesson_076(); // Реализация интерфейса по умолчанию 
+            Lesson_077(); // Структуры. Структуры и классы отличия. struct vs class -> Смотри также проект Benchmark1
+            Lesson_078(); // Упаковка и распаковка значимых типов. boxing and unboxing -> Смотри также проект Benchmark1
+            Lesson_079(); // Обобщения. generics. generic типы методы и классы
+            Lesson_080(); // Обобщения. Производительность. Коллекции. list vs arraylist
+            Lesson_081(); // Enumerable и IEnumerator: как работает цикл foreach и при чём тут паттерн. Итератор
+            Lesson_082(); // Ключевое слово yield. Для чего нужен yield return и как он устроен -> Смотри также проект Benchmark1
+            Lesson_083(); // yield break. Что это такое и зачем использовать
+            Lesson_084(); // Делегаты и Лямбда - выражения
+            Lesson_085(); // Cобытия(Events). Проблемы Инкапсуляции и Делегаты. Multicast Delegates
 
             /*
+             * 
+             * Звуки
             Console.Beep(523, 500); // До  
             Console.Beep(587, 500); // Ре  
             Console.Beep(659, 500); // Ми  
@@ -96,8 +109,35 @@ namespace Learning_C_basics_App
             Console.Beep(784, 500); // Соль  
             Console.Beep(880, 500); // Ля  
             Console.Beep(988, 500); // Си  
+            
+
+            // Описание форматов чисел в C# с примерами
+            Console.WriteLine("1. C format: {0:C}", 2.50);    // Валюта - выведет $2.50 в зависимости от региональных настроек
+            Console.WriteLine("2. D format: {0:D}", 25);      // Десятичное число - выведет 25
+            Console.WriteLine("3. E format: {0:E2}", 250000); // Экспоненциальный - выведет 2.50E+005
+            Console.WriteLine("4. F format: {0:F2}", 2.5);    // С фиксированной запятой - выведет 2.50
+            Console.WriteLine("5. G format: {0:G}", 2.5);     // Общий - выведет 2.5
+            Console.WriteLine("6. N format: {0:N}", 250000);  // Numeric - выведет 250,000.00
+            Console.WriteLine("7. P format: {0:P}", 0.25);    // Процент - выведет 25.00 %
+            Console.WriteLine("8. R format: {0:R}", 2.5);     // Приемо-передача (Round-Trip) - выведет 2.5
+                                                              // Сохранение точности числа при преобразовании в строку и обратно
+            Console.WriteLine("9. X format: {0:X}", 250);     // Шестнадцатеричный - выведет FA
+
+            Console.WriteLine();
+
+            // Пример использования интерполяции строк с форматированием чисел в C#
+            Console.WriteLine($"1. C format: {2.50:C}");        // Валюта - выведет $2.50 в зависимости от региональных настроек
+            Console.WriteLine($"2. D format: {0xFF:D}");        // Десятичное число - выведет 255
+            Console.WriteLine($"3. E format: {250000:E2}");     // Экспоненциальный - выведет 2.50E+005
+            Console.WriteLine($"4. F format: {2.5:F2}");        // С фиксированной запятой - выведет 2.50
+            Console.WriteLine($"5. G format: {2.5:G}");         // Общий - выведет 2.5
+            Console.WriteLine($"6. N format: {2500000:N}");     // Numeric - выведет 2,500,000.00
+            Console.WriteLine($"7. P format: {0.25:P}");        // Процент - выведет 25.00 %
+            Console.WriteLine($"8. R format: {0.123456789_12345678:R}"); // Round-Trip - выведет 0.12345678912345678
+            Console.WriteLine($"9. X format: {255:X}");         // Шестнадцатеричный - выведет FF
             */
 
+            // Delay
             Console.ReadLine();
         }
     }
