@@ -448,11 +448,12 @@ namespace Learning_C_basics_App
             publisher1.RaiseEvent("Hello World!");
             
             Console.WriteLine();
-            
-            publisher.OnNotify = null; // Можем где не используется событие - и это плохо
-            // publisher1.OnNotify = null; // Не можем где  используется событие - и это хорошо
+
             publisher.OnNotify("Hello World!"); // Можем где не используется событие - и это плохо
             //publisher1.OnNotify("Hello World!"); // Не можем где  используется событие - и это хорошо
+            publisher.OnNotify = null; // Можем где не используется событие - и это плохо
+            // publisher1.OnNotify = null; // Не можем где  используется событие - и это хорошо
+            
 
             // Можем только так
             publisher1.OnNotify -= smsSubscriber.ReceiveSms;
